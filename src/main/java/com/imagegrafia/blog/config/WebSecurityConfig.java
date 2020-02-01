@@ -20,7 +20,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 //		http.authorizeRequests().antMatchers("/api").hasAnyRole("ADMIN");
 //		http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
 //		http.csrf().disable().antMatcher("/h2-console/");
-		http.httpBasic().and().authorizeRequests().antMatchers("/**").hasAnyRole("ADMIN");
+		//secure all http request
+		http.httpBasic().and().authorizeRequests()
+		.antMatchers("/h2-console**").permitAll()
+		.antMatchers("/api/**").hasAnyRole("ADMIN")
+		.and().csrf().disable();
+		http.headers().frameOptions().sameOrigin();
 		
 		
 	}
@@ -30,9 +35,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	SecurityProperties securityProperties() {
 		return new SecurityProperties();
 	}
-
-	/*private static final String ROLE_ADMIN_CONST = "ADMIN";
-	private static final String ROLE_USER_CONST = "USER";*/
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
