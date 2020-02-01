@@ -12,8 +12,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
 		http.csrf().disable().antMatcher("/h2-console/");
 		
+		http.authorizeRequests().antMatchers("/").authenticated();
 		
 	}
+	
 	
 	
 
