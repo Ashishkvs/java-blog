@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiParam;
 public class HomeController {
 
 	@GetMapping
-	@ApiOperation(value = "Find developer info",
+	@ApiOperation(value = "Find developer info ..",
 	notes = "This is additional info under api url to provide some info", response = String.class)
 	public String[] getInfo() {
 		return new String[] { "Ashish", "Blog Application" };
